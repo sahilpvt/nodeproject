@@ -1,5 +1,6 @@
 const userModel = require('../model/userModel')
 var nodemailer = require('nodemailer');
+var otp = ""
 exports.insert = async (req, res) => {
     otp = Math.floor(1000 + Math.random() * 9000)
 
@@ -37,6 +38,7 @@ exports.getdata = async (req, res) => {
     const data = await userModel.find()
     res.status(200).json({
         status: "Success",
-        data
+        data,
+        otp
     })
 }
