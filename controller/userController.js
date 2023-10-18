@@ -1,8 +1,7 @@
 const userModel = require('../model/userModel')
 var nodemailer = require('nodemailer');
-var otp = ""
 exports.insert = async (req, res) => {
-    otp = Math.floor(1000 + Math.random() * 9000)
+    var otp = Math.floor(1000 + Math.random() * 9000)
 
     var transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -27,11 +26,11 @@ exports.insert = async (req, res) => {
         }
     });
 
-    const data = await userModel.create(req.body)
-    res.status(200).json({
-        status: "success",
-        data
-    })
+    // const data = await userModel.create(req.body)
+    // res.status(200).json({
+    //     status: "success",
+    //     data
+    // })
 
 }
 exports.getdata = async (req, res) => {
@@ -39,6 +38,5 @@ exports.getdata = async (req, res) => {
     res.status(200).json({
         status: "Success",
         data,
-        otp
     })
 }
